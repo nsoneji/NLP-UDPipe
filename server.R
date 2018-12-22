@@ -1,12 +1,12 @@
 
 options(shiny.maxRequestSize = 30*1024^2)
-shinyServer(function(input,output){
+shinyServer(function(input,output){  # server function for input and output 
   
-  Dataset <- reactive({
+  Dataset <- reactive({              # reactive function to dynamically capture the data
     if(is.null(input$file1)){
       return(NULL)
     }
-    else{
+    else{                                             # text cleaning
       text <- readLines(input$file1$datapath)
       text = str_replace_all(text,"<.*?>","")
       text = str_replace_all(text,"[^a-zA-Z\\s]", " ")
@@ -18,7 +18,7 @@ shinyServer(function(input,output){
     }
   })
   
-  model <- reactive({
+  model <- reactive({                                #loading selected model
     if(is.null(input$file2)){ return (NULL)}
     else {
     udpipe_model = udpipe_load_model(input$file2$datapath)
@@ -26,7 +26,7 @@ shinyServer(function(input,output){
     }
   })
   
-  annotated_df = reactive({
+  annotated_df = reactive({        #creating annotated document using udpipe     
     
     x <- udpipe_annotate(model(),x = Dataset())
     x <- as.data.frame(x)
@@ -34,7 +34,7 @@ shinyServer(function(input,output){
   })
   
   
-  output$annotatedOutput = renderDataTable({
+  output$annotatedOutput = renderDataTable({   # creating data table of annotated data frame
     if(is.null(input$file1)){
       return(NULL)
     }
@@ -45,7 +45,7 @@ shinyServer(function(input,output){
     }
   })
   
-  plotname <- reactive(
+  plotname <- reactive(    # For loop for seeting the subtitle plot dynamically
     {  
   plotname = NULL
   
@@ -58,7 +58,7 @@ shinyServer(function(input,output){
   return (plotname)
     }
   )
-  output$cooccurence = renderPlot({
+  output$cooccurence = renderPlot({    # render coocurence plot
     if(is.null(input$file1)){
       return(NULL)
     }
