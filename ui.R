@@ -62,5 +62,3 @@ shinyUI(
 
 
 
-#source('https://raw.githubusercontent.com/rupalD/ISBCBA/master/DependencyFile.R')
-#runGitHub('ISBCBA','rupalD')
