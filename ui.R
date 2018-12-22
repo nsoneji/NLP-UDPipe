@@ -3,7 +3,7 @@ library(shiny)
 library(shinythemes)
 
 shinyUI(
-  fluidPage(# theme = shinytheme("darkly"),
+  fluidPage(
     
   
     titlePanel(h1("NLP using UDPipe R Package", 
@@ -51,7 +51,7 @@ shinyUI(
                              dataTableOutput('dout1')),
                             # h4('Please click below button to download the annotated data'),
                             #downloadButton("downloadData","Download Annotated Data")),
-                   tabPanel(h4("co-occurences"),
+                   tabPanel(h4("Co-occurences"),
                             plotOutput('plot1'))
                     
         )
