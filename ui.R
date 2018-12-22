@@ -1,7 +1,4 @@
 
-library(shiny)
-library(shinythemes)
-
 shinyUI(
   fluidPage(# theme = shinytheme("darkly"),
     
@@ -17,11 +14,11 @@ shinyUI(
         
         checkboxGroupInput("xpos",
                            label = h3("Select Part of Speech (POS)"),
-                           choices = list("Adjective" = 'JJ', #ADJ',
-                                          "Noun" = "NN", # NOUN",
-                                          "Proper Noun" = "NNP", #PROPN",
-                                          "Adverb" = "RB",#'ADV',
-                                          "Verb" = "VB" #'VERB'
+                           choices = list("Adjective" = 'JJ', 
+                                          "Noun" = "NN",
+                                          "Proper Noun" = "NNP",
+                                          "Adverb" = "RB",
+                                          "Verb" = "VB"
                                            ),
                            selected = c("JJ","NN","NNP"))
       ),
