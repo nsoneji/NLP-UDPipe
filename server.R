@@ -1,12 +1,3 @@
-library(shiny)
-library(udpipe)
-library(textrank)
-library(lattice)
-library(igraph)
-library(ggraph)
-library(ggplot2)
-library(wordcloud)
-library(stringr)
 
 options(shiny.maxRequestSize = 30*1024^2)
 shinyServer(function(input,output){
